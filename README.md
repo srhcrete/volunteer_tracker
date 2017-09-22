@@ -11,14 +11,14 @@ _Application for non-profits that can track projects and volunteers. Projects ca
 ## Specs
 
 | Description        | Input           | Output  |
-| ------------------ |:-------------:| -----:|
-| Adds projects    | '[Add] Park Clean Up' | '[Park Clean Up] link' |
-| Views project details  | 'click [Park Clean Up] link'     | 'project: Park Clean Up, details: pick up trash, replace wood planking on benches, replace all fencing and nets, remove invasive trees, '|
-| Deletes projects    | '[Delete] Park Clean Up' | 'no link' |
-| Updates projects    | '[Update] Park Clean Up name' | '[Park Renovation] link' |
-| Adds volunteers    | '[Add] Paula Small' | '[Paula Small] link' |
-| Views volunteer contact details  | click [Paula Small] link | 'name: Paula Small, number: (555) 987-7674' |
-| Assigns volunteers to projects | '[Assign] Paula Small to Park Clean Up' | '[Paula Small] link in Projects view and [Park Clean Up] link in Paula Small view' |
+| :------------------: |:-------------:| :-----:|
+| Adds projects    | 'click "ADD"' | '"Park Clean Up" link' |
+| Views project details  | 'click "Park Clean Up" link'     | 'details: pick up trash, replace wood planking on benches '|
+| Deletes projects    | 'click "Delete"' | 'no link' |
+| Updates projects    | 'click "Update"' | '"Park Renovation" link' |
+| Adds volunteers    | 'click "Add Paula Small"' | '"Paula Small" link' |
+| Views volunteer contact details  | 'click "Paula Small" link | 'name: Paula Small, number: (555) 987-7674' |
+| Assigns volunteers to projects | 'click "Assign" Paula Small to Park Clean up' | '"Paula Small" link in Projects view and "Park Clean Up" link in Paula Small view' |
 
 
 ## Setup/Installation Requirements
