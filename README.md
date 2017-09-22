@@ -36,11 +36,6 @@ _Application for non-profits that can track projects and volunteers. Projects ca
 
 _Visit ()_
 
-
-## Known Bugs
-
-_..._
-
 ## Technologies Used
 
 _Ruby, SQL, Sinatra, Capybara, Heroku_
