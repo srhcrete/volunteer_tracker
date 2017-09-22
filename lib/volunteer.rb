@@ -28,4 +28,12 @@ class Volunteer
     end
     volunteers
   end
+
+  def self.find(id)
+    result = DB.exec("SELECT * FROM volunteers WHERE id = #{id};")[0]
+    id = result["id"].to_i()
+    name = result["name"]
+    project_id = result["project_id"].to_i()
+    Volunteer.new({:id => id, :name => name, :project_id => project_id})
+  end
 end
