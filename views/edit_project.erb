@@ -1,0 +1,13 @@
+<h1>Project: <%= @project.title %></h1>
+
+<form action="/projects/delete/<%=@project.id%>" method="post">
+  <button type="submit" class="btn btn-danger">Delete Project</button>
+</form>
+
+<form action="/project/<%= @project.id() %>" method="post">
+   <div class="form-group">
+     <label for="title">Rename project:</label>
+     <input type="text" name="title">
+     <button type="submit" class="button btn">Update Project</button>
+   </div>
+</form>
