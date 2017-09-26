@@ -1,27 +1,55 @@
-
 <h1>Volunteer Tracker</h1><br>
+<div class="row">
+  <div class="col-md-6">
+    <% if @projects.any?() %>
+      <h2>Projects:</h2>
 
-<% if @projects.any?() %>
-  <h2>Projects:</h2>
+      <% @projects.each() do |project| %>
+        <h3><a href="/projects/<%= project.id %>"><%= project.title %></a></h3>
+      <% end %>
 
-  <% @projects.each() do |project| %>
-    <h3><a href="/projects/<%= project.id %>"><%= project.title %></a></h3>
-  <% end %>
+    <% else %>
+        <h2>No Current Projects</h2>
 
-  <% else %>
-    <h2>No Current Projects</h2>
-  <% end %>
+    <% end %>
 
-<br>
-<h2>Add a new Project</h2>
+    <form action="/" method="post">
+      <label for="title">Enter the title of the new Project:</label>
+      <input type="text" name="title">
+      <button type="submit" class="btn btn-block">Create Project</button>
+    </form><br>
+  </div>
 
-<form action="/projects" method="post">
-  <label for="title">Enter the title of the new Project:</label>
-  <input type="text" name="title">
-  <button type="submit">Create Project</button>
-</form>
+  <div class="col-md-6">
 
-<br>
+    <% if @volunteers.any?() %>
+<h2>Volunteers:</h2>
+      <% @volunteers.each() do |volunteer| %>
+        <h3><a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></h3>
+      <% end %>
+
+    <% else %>
+        <h2>No Current Volunteers</h2>
+    <% end %>
+
+    <form action="/" method="post">
+      <div class="form-group">
+       <label for="name">Enter name of Volunteer</label>
+       <input type="text" name="name" class="form-control">
+      </div>
+      <div class="form-group">
+       <label for="project_id">Select Project</label>
+       <select class="form-control" name='project_id' type='text'>
+         <% @projects.each() do |project| %>
+           <option value="<%= project.id %>"> <%= project.title %> </option>
+         <% end %>
+       </select>
+      </div>
+      <button type="submit" class="btn btn-block">Add Volunteer</button>
+    </form>
+  </div>
+</div>
+
 <div class="container">
   <a href="/"><button class="btn">Return Home</a>
-</div>
+</div><br>

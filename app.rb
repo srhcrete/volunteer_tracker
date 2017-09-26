@@ -2,21 +2,40 @@ require('sinatra')
 require('sinatra/reloader')
 require('./lib/project')
 require('./lib/volunteer')
-require('pry')
 also_reload('lib/**/*.rb')
 require('pg')
 require('pry')
 
 DB = PG.connect({:dbname => 'volunteer_tracker_test'})
 
-get("/") do
+get('/') do
   @projects = Project.all()
+  @volunteers = Volunteer.all()
   erb(:index)
 end
 
-post("/projects") do
-  title = params["title"]
-  project = Project.new({:title => params['title']}).save
-  @projects = Project.all()
-  erb(:index)
+post('/') do
+  Project.new({:title => params['title']}).save
+  Volunteer.new({:name => params['name'], :project_id => params['project_id']}).save
+  redirect('/')
+end
+
+post('/projects') do
+  Project.new({:title => params['title']}).save
+  redirect('/')
+end
+
+post('/volunteers') do
+  Volunteer.new({:name => params['name'], :project_id => params['project_id']}).save
+  redirect('/')
+end
+
+get('/projects/:id') do
+  @project = Project.find(params[:id])
+  erb(:projects)
+end
+
+get('/volunteers/:id') do
+  @volunteers = Volunteer.find(params[:id])
+  erb(:volunteers)
 end

@@ -1,6 +1,5 @@
 class Volunteer
   attr_reader(:id, :name, :project_id)
-  attr_accessor(:project_id)
 
   def initialize(attributes)
     @id = attributes[:id]
