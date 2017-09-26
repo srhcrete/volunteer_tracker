@@ -27,21 +27,21 @@ class Project
   end
 
   def self.find(id)
-    # result = DB.exec("SELECT * FROM projects WHERE id = #{id};")
-    # name = result.first["title"]
-    # Project.new({:title => name, :id => id})
-    found_project = DB.exec("SELECT * FROM projects WHERE id = #{id}").first
-    Project.new({title: found_project['title'], id: found_project['id'].to_i})
+    result = DB.exec("SELECT * FROM projects WHERE id = #{id};")
+    name = result.first["title"]
+    Project.new({:title => name, :id => id})
+    # found_project = DB.exec("SELECT * FROM projects WHERE id = #{id}").first
+    # Project.new({title: found_project['title'], id: found_project['id'].to_i})
   end
 
   def volunteers
     project_volunteers = []
     volunteers = DB.exec("SELECT * FROM volunteers where project_id = #{self.id};")
     volunteers.each() do |volunteer|
-      id = volunteer["id"].to_i()
       name = volunteer["name"]
       project_id = volunteer["project_id"].to_i()
-      project_volunteers.push(Volunteer.new({:id => id, :name => name, :project_id => project_id}))
+      id = volunteer["id"].to_i()
+      project_volunteers.push(Volunteer.new({:name => name, :project_id => project_id, :id => id}))
     end
     project_volunteers
   end

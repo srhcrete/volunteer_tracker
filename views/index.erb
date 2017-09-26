@@ -1,8 +1,8 @@
 <h1>Volunteer Tracker</h1><br>
 <div class="row">
   <div class="col-md-6">
+    <h2>Projects:</h2>
     <% if @projects.any?() %>
-      <h2>Projects:</h2>
 
       <% @projects.each() do |project| %>
         <h3><a href="/projects/<%= project.id %>"><%= project.title %></a></h3>
@@ -12,17 +12,17 @@
         <h2>No Current Projects</h2>
       <% end %>
 
-    <form action="/" method="post">
+    <form action="/project" method="post">
       <label for="title">Enter the title of the new Project:</label>
-      <input type="text" name="title">
+      <input type="text" name="title" required>
       <button type="submit" class="btn btn-block">Create Project</button>
     </form><br>
   </div>
 
   <div class="col-md-6">
-
+    <h2>Volunteers:</h2>
     <% if @volunteers.any?() %>
-     <h2>Volunteers:</h2>
+
       <% @volunteers.each() do |volunteer| %>
         <h3><a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></h3>
       <% end %>
@@ -31,14 +31,14 @@
         <h2>No Current Volunteers</h2>
       <% end %>
 
-    <form action="/" method="post">
+    <form action="/volunteer" method="post">
       <div class="form-group">
        <label for="name">Enter name of Volunteer</label>
-       <input type="text" name="name" class="form-control">
+       <input class="form-control" type="text" name="name" required>
       </div>
       <div class="form-group">
        <label for="project_id">Select Project</label>
-       <select class="form-control" name='project_id' type='text'>
+       <select class="form-control" type='text' name='project_id' required>
          <% @projects.each() do |project| %>
            <option value="<%= project.id %>"> <%= project.title %> </option>
          <% end %>
