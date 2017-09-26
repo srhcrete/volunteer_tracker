@@ -22,16 +22,16 @@ post('/project') do
 end
 
 post('/volunteer') do
-  Volunteer.new({:name => params['name'], :project_id => params['project_id'], :id => nil}).save
+  Volunteer.new({:name => params['name'], :project_id => params['project_id']}).save
   redirect('/')
 end
 
-post('/projects') do
+post('/projects/:id') do
   Project.new({:title => params['title']}).save
   redirect('/')
 end
 
-post('/volunteers') do
+post('/volunteers/:id') do
   Volunteer.new({:name => params['name'], :project_id => params['project_id']}).save
   redirect('/')
 end
@@ -42,6 +42,6 @@ get('/projects/:id') do
 end
 
 get('/volunteers/:id') do
-  @volunteers = Volunteer.find(params[:id])
+  @volunteer = Volunteer.find(params[:id])
   erb(:volunteers)
 end
