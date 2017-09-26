@@ -27,9 +27,11 @@ class Project
   end
 
   def self.find(id)
-    result = DB.exec("SELECT * FROM projects WHERE id = #{id};")
-    name = result.first["title"]
-    Project.new({:title => name, :id => id})
+    # result = DB.exec("SELECT * FROM projects WHERE id = #{id};")
+    # name = result.first["title"]
+    # Project.new({:title => name, :id => id})
+    found_project = DB.exec("SELECT * FROM projects WHERE id = #{id}").first
+    Project.new({title: found_project['title'], id: found_project['id'].to_i})
   end
 
   def volunteers

@@ -8,10 +8,9 @@
         <h3><a href="/projects/<%= project.id %>"><%= project.title %></a></h3>
       <% end %>
 
-    <% else %>
+      <% else %>
         <h2>No Current Projects</h2>
-
-    <% end %>
+      <% end %>
 
     <form action="/" method="post">
       <label for="title">Enter the title of the new Project:</label>
@@ -23,14 +22,14 @@
   <div class="col-md-6">
 
     <% if @volunteers.any?() %>
-<h2>Volunteers:</h2>
+     <h2>Volunteers:</h2>
       <% @volunteers.each() do |volunteer| %>
         <h3><a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></h3>
       <% end %>
 
-    <% else %>
+      <% else %>
         <h2>No Current Volunteers</h2>
-    <% end %>
+      <% end %>
 
     <form action="/" method="post">
       <div class="form-group">
