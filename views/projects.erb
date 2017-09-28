@@ -1,8 +1,28 @@
 <h1>Volunteer Tracker</h1><br>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Selected Project:</h2>
+    <h3><%= @project.title %></h3><br>
+    <a class="btn" href="/projects/<%= @project.id %>/edit">Edit Project</a><br>
+  </div>
 
-<h2>Selected Project:</h2>
-<h3><%= @project.title %></h3><br>
-<a class="btn" href="/projects/<%= @project.id %>/edit">Edit Project</a><br>
+  <div class="col-md-6">
+
+    <% if @project.volunteers().any?() %>
+        <h3>Here are all the volunteers in this project:</h3>
+
+        <ul>
+          <% @project.volunteers().each() do |volunteer| %>
+            <li><a href="/volunteers/<%= volunteer.id() %>"><%= volunteer.name() %></a></li>
+          <% end %>
+        </ul>
+
+        <% else %>
+          <p>There are no volunteers on this project!</p>
+      <% end %>
+
+    </div>
+</div>
 
 <div class="container">
   <a href="/"><button class="btn">Return Home</a>
